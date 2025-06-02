@@ -30,7 +30,7 @@
                                 <a href="{{ route('front.details', $article->slug) }}" class="ml-4 sm:ml-auto font-bold text-4xl leading-[45px] text-white two-lines hover:underline transition-all duration-300">
                                     {{ $article->name }}
                                 </a>
-                                <p class="ml-4 sm:ml-0 text-white">{{ $article->created_at->format('d M, Y') }} • {{ $article->category->name }}</p>
+                                <p class="ml-4 sm:ml-0 text-white">{{ $article->created_at->diffForHumans() }} • {{ $article->category->name }}</p>
                             </div>
                             <div class="prevNextButtons flex items-center gap-4 mb-0 mr-4 sm:mb-10">
                                 <button class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="card-info flex flex-col gap-[6px]">
                                 <h3 class="font-bold text-lg leading-[27px]">{{ substr($article->name, 0, 50) }}{{ strlen($article->name) > 50 ? '...' : '' }}</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->format('d M Y, H:i') }} WIB</p>
+                                <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
                     </a>
@@ -146,7 +146,7 @@
                             <a href="{{ route('front.details', $tech_featured_articles->slug) }}" class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                                 {{ $tech_featured_articles->name }}
                             </a>
-                            <p class="text-white">{{ $tech_featured_articles->created_at->format('d M Y, H:i') }}</p>
+                            <p class="text-white">{{ $tech_featured_articles->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                                         <h3 class="font-bold text-lg leading-[27px]">
                                             {{ substr($article->name, 0, 50) }}{{ strlen($article->name) > 50 ? '...' : '' }}
                                         </h3>
-                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->format('d M Y, H:i') }}</p>
+                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </a>
@@ -196,7 +196,7 @@
                             <a href="{{ route('front.details', $politic_featured_articles->slug) }}" class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                                 {{ $politic_featured_articles->name }}
                             </a>
-                            <p class="text-white">{{ $politic_featured_articles->created_at->format('d M Y, H:i') }}</p>
+                            <p class="text-white">{{ $politic_featured_articles->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
                                         <h3 class="font-bold text-lg leading-[27px]">
                                             {{ substr($article->name, 0, 50) }}{{ strlen($article->name) > 50 ? '...' : '' }}
                                         </h3>
-                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->format('d M Y, H:i') }}</p>
+                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </a>
@@ -246,7 +246,7 @@
                             <a href="{{ route('front.details', $oto_featured_articles->slug) }}" class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                                 {{ $oto_featured_articles->name }}
                             </a>
-                            <p class="text-white">{{ $oto_featured_articles->created_at->format('d M Y, H:i') }}</p>
+                            <p class="text-white">{{ $oto_featured_articles->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
                 </div>
@@ -264,7 +264,7 @@
                                         <h3 class="font-bold text-lg leading-[27px]">
                                             {{ substr($article->name, 0, 50) }}{{ strlen($article->name) > 50 ? '...' : '' }}
                                         </h3>
-                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->format('d M Y, H:i') }}</p>
+                                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $article->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </a>

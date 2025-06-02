@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\ArticleNewsResource\Pages;
 
-use App\Filament\Resources\ArticleNewsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\ArticleNewsResource;
+use App\Filament\Resources\ArticleNewsResource\Widgets\ArticleCount;
+use App\Filament\Resources\ArticleNewsResource\Widgets\PostCountOrderByDayChart;
 
 class ListArticleNews extends ListRecords
 {
@@ -14,6 +16,14 @@ class ListArticleNews extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            PostCountOrderByDayChart::make(),
+            ArticleCount::make(),
         ];
     }
 }

@@ -65,9 +65,25 @@ class ArticleNewsResource extends Resource
                         'featured' => 'success',
                         'not_featured' => 'danger',
                     }),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Date Time') // Opsional: ubah label di tabel
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('Category')
+                    ->relationship('category', 'name'),
+                Tables\Filters\SelectFilter::make('Author')
+                    ->relationship('author', 'name'),
+                Tables\Filters\SelectFilter::make('Featured Status')
+                    ->options([
+                        'featured' => 'Featured',
+                        'not_featured' => 'Not Featured',
+                    ]),
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -79,6 +95,12 @@ class ArticleNewsResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->orderByDesc('created_at');
     }
 
     public static function getRelations(): array
@@ -94,6 +116,14 @@ class ArticleNewsResource extends Resource
             'index' => Pages\ListArticleNews::route('/'),
             'create' => Pages\CreateArticleNews::route('/create'),
             'edit' => Pages\EditArticleNews::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            ArticleNewsResource\Widgets\ArticleCount::class,
+            ArticleNewsResource\Widgets\PostCountOrderByDayChart::class,
         ];
     }
 }

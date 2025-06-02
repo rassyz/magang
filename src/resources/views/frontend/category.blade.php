@@ -38,7 +38,7 @@
                                 {{ substr($news_category->name, 0, 50) }}{{ strlen($news_category->name) > 50 ? '...' : '' }}
                             </h3>
                             <p class="text-sm leading-[21px] text-[#A3A6AE]">
-                                {{ $news_category->created_at->format('d M Y, H:i') }}
+                                {{ $news_category->created_at->diffForHumans() }}
                             </p>
                         </div>
                     </div>
