@@ -175,8 +175,28 @@
 
           </div>
 
+          <!-- Alert Section -->
+            @if (session('success'))
+                <div class="mt-2 mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Sukses!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="mt-2 mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Terjadi kesalahan:</strong>
+                    <ul class="list-disc list-inside mt-2">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
           <!-- Add Comment Form -->
-          <form action="{{ route('front.comment', $articleNews->id) }}" method="POST" class="mt-8 bg-white p-4 rounded-lg shadow">
+        <form action="{{ route('front.comment', $articleNews->id) }}" method="POST" class="mt-8 bg-white p-4 rounded-lg shadow">
             @csrf
             <h3 class="text-lg font-semibold mb-2">Add a Comment</h3>
             <div class="mb-4">

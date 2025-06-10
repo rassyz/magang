@@ -185,6 +185,15 @@ class FrontController extends Controller
             'comment' => ['required', 'string', 'max:255'],
         ]);
 
+        $badWords = ['bodoh', 'goblok', 'bangsat', 'anjing'];
+        $comment = strtolower($request->comment);
+
+        foreach ($badWords as $badWord) {
+            if (str_contains($comment, $badWord)) {
+                return redirect()->back()->withErrors(['comment' => 'Komentar mengandung kata yang tidak pantas.']);
+            }
+        }
+
         $articleNews->comments()->create([
             'name' => $request->name,
             'review' => $request->comment,
